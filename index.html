@@ -287,133 +287,40 @@ Thank you soooo much for loving me the way you do. I love you so so so so fuckin
   <!-- html2canvas for saving the card screen -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-  <script>
-    // Screen navigation
-    function goToScreen(n) {
-      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById("screen-" + n).classList.add("active");
-    }
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-    // Photo upload logic (same as before)
-    const fileInput = document.getElementById("file-input");
-    const uploadArea = document.getElementById("upload-area");
-    const canvas = document.getElementById("photo-canvas");
-    const ctx = canvas.getContext("2d");
-    const downloadBtn = document.getElementById("download-btn");
+<script>
+// Screen navigation
+function goToScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + n).classList.add('active');
+}
 
-    if (fileInput) {
-      fileInput.addEventListener("change", handleFile);
+// Runaway "No" button [web:45]
+const noButton = document.getElementById('noButton');
+function moveNoButton() {
+  const card = document.querySelector('.card');
+  const maxX = card.clientWidth - noButton.offsetWidth - 40;
+  const maxY = 220;
+  const x = Math.random() * maxX + 20;
+  const y = Math.random() * maxY + 40;
+  noButton.style.left = x + 'px';
+  noButton.style.top = y + 'px';
+}
+if (noButton) {
+  noButton.addEventListener('mouseenter', moveNoButton);
+  noButton.addEventListener('click', moveNoButton);
+}
 
-      ["dragenter", "dragover"].forEach(evt =>
-        uploadArea.addEventListener(evt, e => {
-          e.preventDefault();
-          e.stopPropagation();
-          uploadArea.classList.add("dragover");
-        })
-      );
+// Yes button success message
+function showYesMessage() {
+  document.getElementById('final-message').style.display = 'block';
+}
+</script>
 
-      ["dragleave", "drop"].forEach(evt =>
-        uploadArea.addEventListener(evt, e => {
-          e.preventDefault();
-          e.stopPropagation();
-          uploadArea.classList.remove("dragover");
-        })
-      );
-
-      uploadArea.addEventListener("drop", e => {
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.startsWith("image/")) {
-          readImage(file);
-        }
-      });
-    }
-
-    function handleFile(e) {
-      const file = e.target.files[0];
-      if (file && file.type.startsWith("image/")) {
-        readImage(file);
-      }
-    }
-
-    function readImage(file) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        const img = new Image();
-        img.onload = () => {
-          const maxWidth = 400;
-          const maxHeight = 260;
-          let { width, height } = img;
-          const ratio = Math.min(maxWidth / width, maxHeight / height);
-          width *= ratio;
-          height *= ratio;
-
-          canvas.width = width;
-          canvas.height = height;
-          canvas.style.display = "block";
-
-          ctx.clearRect(0, 0, width, height);
-          ctx.save();
-          roundedRect(ctx, 0, 0, width, height, 16);
-          ctx.clip();
-          ctx.drawImage(img, 0, 0, width, height);
-          ctx.restore();
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function roundedRect(ctx, x, y, w, h, r) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.lineTo(x + w - r, y);
-      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-      ctx.lineTo(x + w, y + h - r);
-      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-      ctx.lineTo(x + r, y + h);
-      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-      ctx.lineTo(x, y + r);
-      ctx.quadraticCurveTo(x, y, x + r, y);
-      ctx.closePath();
-    }
-
-    // Download only screen 2 as image
-    if (downloadBtn) {
-      downloadBtn.addEventListener("click", () => {
-        html2canvas(document.getElementById("screen-2")).then(canvasEl => {
-          const link = document.createElement("a");
-          link.download = "valentine-for-muniba.png";
-          link.href = canvasEl.toDataURL("image/png");
-          link.click();
-        });
-      });
-    }
-
-    // Runaway "No" button so she can’t press it [web:45]
-    const noButton = document.getElementById("noButton");
-
-    function moveNoButton() {
-      const maxX = document.querySelector(".card").clientWidth - noButton.offsetWidth - 40;
-      const maxY = 220; // keep it inside card area
-
-      const x = Math.random() * maxX + 20;
-      const y = Math.random() * maxY + 40;
-
-      noButton.style.left = x + "px";
-      noButton.style.top = y + "px";
-    }
-
-    if (noButton) {
-      noButton.addEventListener("mouseenter", moveNoButton);
-      noButton.addEventListener("click", moveNoButton); // just in case she taps fast
-    }
-
-    function showYesMessage() {
-      document.getElementById("final-message").style.display = "block";
-    }
-  </script>
 </body>
 </html>
+
 
 
 
