@@ -261,6 +261,13 @@ Thank you soooo much for loving me the way you do. I love you so so so so fuckin
         <div class="photos">
   <img src="pic1.jpg" alt="thirdwheeler" class="photo">
   <img src="pic2.jpg" alt="look how cute you lookkk" class="photo">
+<div style="margin-top:20px;">
+  <h2 style="font-family:'Great Vibes', cursive; color:#c9184a;">
+    We've been us for:
+  </h2>
+  <p id="love-counter" style="font-size:18px; font-weight:600;"></p>
+</div>
+
 </div>
 
 <button class="btn" onclick="goToScreen(3)">Next ➜</button>
@@ -291,6 +298,25 @@ Thank you soooo much for loving me the way you do. I love you so so so so fuckin
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
+  // 💞 Relationship Counter
+const startDate = new Date("2025-06-11T18:00:00"); // CHANGE THIS
+
+function updateCounter() {
+  const now = new Date();
+  const diff = now - startDate;
+
+  const seconds = Math.floor(diff / 1000) % 60;
+  const minutes = Math.floor(diff / (1000 * 60)) % 60;
+  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("love-counter").innerText =
+    `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+}
+
+setInterval(updateCounter, 1000);
+updateCounter();
+
 // Screen navigation
 function goToScreen(n) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -328,6 +354,7 @@ function showYesMessage() {
 
 </body>
 </html>
+
 
 
 
