@@ -247,6 +247,8 @@ body {
         <h2>Amar Jaan</h2>
 
         <p class="note">
+  <span id="typed-text"></span>
+</p>
 To my dear Muniba, Happy Valentines Day! I really wish there was a way to propose to you in person but I guess fate had other plans. I want to remind you how much you truly mean to me. You have really blessed my life with your presence, your beauty, your humour and your love. I can see myself spending the rest of my days with you. No matter what life throws at us, know that as long as amra ekshathe thaki, everything will be okay.
 
 As the Weeknd once sang, “the distance and the time between us, it will never change my mind because baby I would die for youuu”.
@@ -349,11 +351,42 @@ function showYesMessage() {
   // (Optional) Also hide the Yes button after clicking
   document.getElementById('yesButton').style.display = 'none';
 }
+// ✨ Typewriter Effect
+const message = `To my dear Muniba, Happy Valentines Day! I really wish there was a way to propose to you in person but I guess fate had other plans. I want to remind you how much you truly mean to me. You have really blessed my life with your presence, your beauty, your humour and your love. I can see myself spending the rest of my days with you. No matter what life throws at us, know that as long as amra ekshathe thaki, everything will be okay.
+
+As the Weeknd once sang, “the distance and the time between us, it will never change my mind because baby I would die for youuu”.
+
+Remember even if we couldn't be together today, you will find that within no time, I'll have a stable income in the US and we will get married and you'll get citizenship and we'll have so much alone time and I’ll make up for every kiss and hug I owe you.
+
+Thank you soooo much for loving me the way you do. I love you so so so so fucking much and I can't wait to see you again.;
+
+let index = 0;
+let typingStarted = false;
+
+function typeWriter() {
+  if (index < message.length) {
+    document.getElementById("typed-text").innerHTML += message.charAt(index);
+    index++;
+    setTimeout(typeWriter, 35); // typing speed (lower = faster)
+  }
+}
+
+// Start typing only when Screen 2 opens
+const originalGoToScreen = goToScreen;
+goToScreen = function(n) {
+  originalGoToScreen(n);
+
+  if (n === 2 && !typingStarted) {
+    typingStarted = true;
+    typeWriter();
+  }
+};
 
 </script>
 
 </body>
 </html>
+
 
 
 
