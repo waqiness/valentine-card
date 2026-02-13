@@ -409,11 +409,23 @@ function showReason() {
   reasonText.innerText = reasons[randomIndex];
   reasonText.style.display = "block";
 }
+.fade-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  margin-top: 18px;
+}
+
+.fade-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 </script>
 
 </body>
 </html>
+
 
 
 
