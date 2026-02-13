@@ -316,11 +316,19 @@ if (noButton) {
 // Yes button success message
 function showYesMessage() {
   document.getElementById('final-message').style.display = 'block';
+  
+  // Hide the No button
+  document.getElementById('noButton').style.display = 'none';
+  
+  // (Optional) Also hide the Yes button after clicking
+  document.getElementById('yesButton').style.display = 'none';
 }
+
 </script>
 
 </body>
 </html>
+
 
 
 
