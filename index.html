@@ -280,12 +280,23 @@ body {
         </div>
 
         <p class="final-message" id="final-message" style="display:none;">
-          Thank you so much for clicking Yes! I knew you would since we are soulmates and all that, I'm so thankful for your existence man. I've been a heavy sleeper all my life but i've made a habit of waking up early everyday just in case you'd call, because hearing your voice makes my day. Please let's meet up soon, Muni amar jaaneri jaan. I LOVE YOU 💞
+          Thank you so much for clicking Yes! I knew you would since we are soulmates and all that, I'm so thankful for your existence man. It's like the hole inside my soul was really the shape of you. I've been a heavy sleeper all my life but i've made a habit of waking up early everyday just in case you'd call, because hearing your voice makes my day. Please let's meet up soon, Muni amar jaaneri jaan. I LOVE YOU 💞
         </p>
       </div>
 
     </div>
   </div>
+
+  <!-- Screen 4: Why I Chose You -->
+<div class="screen" id="screen-4">
+  <h1>Why I Chose You ❤️</h1>
+  <p class="note">
+    Click the button to see a reason I love you (or why you’re stuck with me)
+  </p>
+  <button class="btn" onclick="showReason()">Reveal Reason</button>
+  <p id="reason-text" class="final-message" style="display:none; margin-top:20px;"></p>
+  <button class="btn btn-secondary" style="margin-top:20px;" onclick="goToScreen(1)">Back to Start</button>
+</div>
 
   <!-- html2canvas for saving the card screen -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -375,10 +386,30 @@ goToScreen = function(n) {
   }
 };
 
+  // 💞 Why I Chose You Interactive
+const reasons = [
+  "I love the man that you see in me. even when i cant see him. I hope to be the best version of myself for you.",
+  "I just LOVE the way you laugh and talk man. I remember you said something about not liking your teeth but I LOVE IT. I LOVE seeing you smile. Your smile just does something to me.",
+  "I love the silence in your deep brown eyes, it just pulls me in and i just cant help stare into them. Some people claim that the eyes are the window to the soul and if that is true, your soul is the most beautiful soul i've ever seen.",
+  "I love how you love me. It’s the little things like how you make me feel loved and secure even when we haven’t talked for a while. How you talk about me to your friends, call me every day whenever you get the chance even while in college. it's the way your voice just calms me down. All of it makes me feel so lucky to have you.",
+  "I love your body and how beautiful it is, I can’t help but want to hold you close and cuddle you so badly just to feel you next to me. I love the way you smell too. As i've said before, the hole in my soul is the shape of you.",
+  "I love your rosy cheeks and how red your face gets when you blush. they make you look so warm and cuteeee, and i melt inside everytime you turn red.",
+  "I love how soft your heart is. You care so deeply, even after everything you’ve been through, and you really don't deserve anything thats happening to you in this time. I wish to protect you from everything bad in this world, because all I want is for you to feel safe, happy and loved the way you’ve always deserved.",
+  "tung tung tung sahur"
+];
+
+function showReason() {
+  const reasonText = document.getElementById("reason-text")
+  const randomIndex = Math.floor(Math.random() * reasons.length);
+  reasonText.innerText = reasons[randomIndex];
+  reasonText.style.display = "block";
+}
+
 </script>
 
 </body>
 </html>
+
 
 
 
