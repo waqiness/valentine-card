@@ -362,13 +362,14 @@ if (noButton) {
 // Yes button success message
 function showYesMessage() {
   document.getElementById('final-message').style.display = 'block';
-  
-  // Hide the No button
   document.getElementById('noButton').style.display = 'none';
-  
-  // (Optional) Also hide the Yes button after clicking
   document.getElementById('yesButton').style.display = 'none';
+
+  setTimeout(() => {
+    document.getElementById('afterYesBtn').classList.add('show');
+  }, 2000);
 }
+
 // ✨ Typewriter Effect
 const message = `To my dear Muniba, Happy Valentines Day! I really wish there was a way to propose to you in person but I guess fate had other plans. I want to remind you how much you truly mean to me. You have really blessed my life with your presence, your beauty, your humour and your love. I can see myself spending the rest of my days with you. No matter what life throws at us, know that as long as amra ekshathe thaki, everything will be okay.
 
@@ -425,6 +426,7 @@ function showReason() {
 
 </body>
 </html>
+
 
 
 
