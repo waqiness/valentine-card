@@ -224,7 +224,17 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
   object-fit: cover;
 }
+.fade-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  margin-top: 18px;
+}
 
+.fade-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
   </style>
 </head>
 <body>
@@ -409,22 +419,13 @@ function showReason() {
   reasonText.innerText = reasons[randomIndex];
   reasonText.style.display = "block";
 }
-.fade-btn {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
-  margin-top: 18px;
-}
 
-.fade-btn.show {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 </script>
 
 </body>
 </html>
+
 
 
 
